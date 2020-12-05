@@ -1,0 +1,16 @@
+<%if logged_in? && @tweet.user == current_user%>
+
+<h1>Edit</h1>
+
+<form action="/tweets/<%= @tweet.id %>" method="POST">
+  <input type="hidden" name="_method" value="PATCH">
+
+  <label for="content">Content</label>
+  <input type="text" name="content" id="content" value="<%= @tweet.content %>">
+
+  <input type="submit" value="submit">
+</form>
+
+<%else%>
+<%redirect '/login'%>
+<%end%>
